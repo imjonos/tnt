@@ -395,10 +395,12 @@ class ShippingService extends AbstractService {
         
         if($this->auto_activity === true) {
         
-            $this->activity->book($conRefs)
+             $this->activity->book($conRefs)
                            ->ship($conRefs)
-                           ->printAll($conRefs);
-                     
+                           ->printConsignmentNote($conRefs)
+                           ->printLabel($conRefs)
+                           ->printManifest($conRefs)
+                           ->printInvoice($conRefs);   
         }
         
         return $this->activity;
